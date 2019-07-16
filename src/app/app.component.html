@@ -1,5 +1,9 @@
 <title>{title}</title>
 <h1>Handwritten Digits Recognition</h1>
-<h2>Your Image:</h2>
+<h2>Uploaded Image:</h2>
 <img [src]="url" height="200"> <br/>
-<input type="file" (change)="onSelectFile($event)" accept="image/*">
+<input type="file" (change)="onSelectFile($event)" accept=".csv">
+<h3>Train on Data</h3>
+<input type='file' (change)="onTrain($event)" accept=".csv ">
+<h4>Test on Data</h4>
+<input type='file' (change)="onTest($event)" accept=".csv ">
