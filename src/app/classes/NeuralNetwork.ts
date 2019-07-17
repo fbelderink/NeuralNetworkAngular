@@ -44,7 +44,7 @@ export class NeuralNetwork {
         let final_input = this.np.dot(this.who, hidden_outputs[hidden_outputs.length - 1]);
         let final_output = this.activation_function(final_input);
 
-        return final_output;
+        return final_output;    
     }
 
     train(input_list: number[], targets_list: number[]) {
