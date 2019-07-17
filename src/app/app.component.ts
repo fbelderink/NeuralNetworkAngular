@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NeuralNetwork } from './classes/NeuralNetwork';
-import { VirtualTimeScheduler } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -51,7 +50,23 @@ export class AppComponent {
       
         let arr = toArray((<FileReader>event.target).result);
         let input = arr[0].split(",").map(Number).slice(1);
-        
+
+        const canvas = <HTMLCanvasElement> document.getElementById("img");
+        const context = canvas.getContext("2d");
+
+        let id = context.createImageData(28,28);
+
+
+        for(let i = 0; i < 28; i++){
+          for(let j = 0; j < 28; j++){
+            id.data[i * 112 + j * 4] = input[i * j];
+            id.data[i * 112 + j * 4 + 1] = input[i * j];;
+            id.data[i * 112 + j * 4 + 2] = input[i * j];;
+            id.data[i * 112 + j * 4 + 3] = 255;
+          }
+        }
+        context.putImageData(id,1,1);
+
         let output = this.nn.query(input);
 
         let label = 0;
